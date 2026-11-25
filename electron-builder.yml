@@ -1,0 +1,29 @@
+appId: com.liubendou.dsh
+productName: 六本豆
+directories:
+  output: dist
+files:
+  - electron/**
+  - package.json
+  - "!dist/**"
+extraResources:
+  - from: vendor/dsh-purge-community-1.6.85.tgz
+    to: plugin/dsh-purge-community-1.6.85.tgz
+  - from: node_modules
+    to: dsh/node_modules
+win:
+  target:
+    - target: portable
+      arch: [x64]
+    - target: nsis
+      arch: [x64]
+  signAndEditExecutable: false
+portable:
+  artifactName: 六本豆-${version}-portable.exe
+nsis:
+  artifactName: 六本豆-${version}-setup.exe
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  shortcutName: 六本豆
+compression: store

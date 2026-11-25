@@ -1,0 +1,23 @@
+# 六本豆专属 dsh · UI 与预装插件挂载层
+# 只做 insert：不覆盖任何内核行的 config。
+# 说明：dsh 的 entry id 可自定义、按 id 定位，name 不符会被静默跳过；
+# 用 `dsh plugin add` 安装时官方安装器会自动写入 dsh.profile.bundles，
+# 本文件用于本地 link / 需要显式可见时。行 id 取包名去 scope，若某行未生效，
+# 用 `dsh web --dump-config | grep -i <包名>` 核对真实 id。
+- insert:
+    - id: dsh-brand
+      name: 'dsh-brand'
+    - id: dsh-theme-studio
+      name: 'dsh-theme-studio'
+    - id: dsh-ui-font
+      name: 'dsh-ui-font'
+    - id: dsh-web-fetch
+      name: 'dsh-web-fetch'
+    - id: dsh-web-search
+      name: 'dsh-web-search'
+    - id: dsh-memory
+      name: 'dsh-memory'
+    - id: dsh-superagent
+      name: '@reserendipity/dsh-superagent'
+    - id: dsh-purge-community
+      name: 'dsh-purge-community'

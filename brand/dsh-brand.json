@@ -1,0 +1,23 @@
+{
+  "name": "六本豆",
+  "version": "",
+  "useDshVersion": "true",
+  "headline": "今天想办什么，六本豆来",
+  "badge": "专属",
+  "intro": "六本豆专属智能体工作台",
+  "logoText": "豆",
+  "logoUrl": "",
+  "title": "六本豆",
+  "favicon": "",
+  "sendIcon": "",
+  "stopIcon": "",
+  "thinkText": "六本豆在琢磨",
+  "runningIcon": "",
+  "runningIconMode": "native",
+  "runningText": "六本豆正在办",
+  "runningTextKeepTimer": "true",
+  "colorEnabled": "true",
+  "colorTargets": "sidebar,project,think,running,composer",
+  "color": "#4E7A5E",
+  "hideNotice": "true"
+}

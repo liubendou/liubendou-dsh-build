@@ -1,0 +1,63 @@
+/* ============================================================
+   六本豆专属 · dsh Web UI 主题层（只覆盖外观令牌，不动任何内核插件）
+   应用方式：dsh-theme-studio 的 Advanced → 自定义 CSS 粘贴本文件，
+             或在 Settings → Theme Studio 的 Colors / Fonts 页逐项填写。
+   令牌来源：dsh 设计系统公开的 CSS 自定义属性
+     - 语义色  --dsw-alias-*
+     - 字体    --dsw-font-family / --dsw-font-mono / --ds-font-family-code / --dsw-font-family-brand
+     - 正文    --dsw-font-markdown-base
+   本文件只使用上述已公开的令牌名，未出现过的令牌一律不写，避免版本升级后静默失效。
+   ============================================================ */
+
+/* ---------- 亮色（豆白 + 豆青） ---------- */
+:root {
+  /* 品牌主色：侧栏图标、Think 行、运行状态、发送按钮 */
+  --dsw-alias-brand-primary: #4E7A5E;
+
+  /* 表面与背景 */
+  --dsw-alias-bg-layer-1: #FAF8F2;
+
+  /* 文字层级 */
+  --dsw-alias-label-primary: #1E2A22;
+  --dsw-alias-label-secondary: #57685C;
+  --dsw-alias-label-caption: #7C8B7F;
+  --dsw-alias-label-primary-inverted: #FFFFFF;
+
+  /* 边框 */
+  --dsw-alias-border-l1: #DDE5D9;
+
+  /* 字体：界面 / 等宽 / 代码 / 品牌字标 */
+  --dsw-font-family: "Source Han Sans SC", "Noto Sans SC", "PingFang SC",
+    "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --dsw-font-mono: "JetBrains Mono", "SF Mono", "Fira Code", Consolas, monospace;
+  --ds-font-family-code: "JetBrains Mono", "SF Mono", "Fira Code", Consolas, monospace;
+  --dsw-font-family-brand: "Source Han Serif SC", "Noto Serif SC", "Songti SC", serif;
+
+  /* 对话正文基准字号（dsh 默认 16px） */
+  --dsw-font-markdown-base: 16px;
+}
+
+/* ---------- 暗色（豆墨 + 豆青高光） ----------
+   注意：dsh 切换明暗时给 html/body 打的主题标记，各版本不完全一致。
+   下面三个选择器覆盖了常见形态；若你的版本未命中，请直接在
+   Theme Studio 面板的 dark 页签里填同一组值（面板写入优先于本文件）。
+   待确认：暗色主题标记的确切属性名。 */
+[data-theme="dark"],
+html.theme-dark,
+body.theme-dark {
+  --dsw-alias-brand-primary: #8FC0A0;
+  --dsw-alias-bg-layer-1: #131611;
+  --dsw-alias-label-primary: #E9EFE7;
+  --dsw-alias-label-secondary: #A9B8AC;
+  --dsw-alias-label-caption: #7E8C81;
+  --dsw-alias-label-primary-inverted: #10140F;
+  --dsw-alias-border-l1: #2B322B;
+}
+
+/* 想再贴合“六本豆”一点，可在此追加排版微调，
+   例如正文行高与段落间距；这类属性不依赖令牌，升级不易失效。 */
+.dsh-markdown,
+[class*="markdown"] {
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}

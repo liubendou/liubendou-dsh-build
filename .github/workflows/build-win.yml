@@ -1,0 +1,53 @@
+name: build-win
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 安装依赖
+        run: npm install --no-audit --no-fund
+
+      - name: 注入六本豆 UI
+        run: node patch/apply-brand.mjs
+
+      - name: 安装预装插件（版本固定）
+        shell: pwsh
+        run: |
+          $specs = @(
+            "github:advance-lion/dsh-brand",
+            "dsh-theme-studio@2.0.0",
+            "dsh-ui-font@1.2.2",
+            "dsh-web-fetch@1.0.0",
+            "dsh-web-search@0.1.2",
+            "dsh-memory@0.1.0",
+            "@reserendipity/dsh-superagent@0.2.10"
+          )
+          foreach ($s in $specs) { npx dsh plugin --profile web add $s }
+          npx dsh plugin --profile web add (Resolve-Path .\vendor\dsh-purge-community-1.6.85.tgz).Path
+
+      - name: 打包 Windows EXE
+        env:
+          ELECTRON_MIRROR: https://npmmirror.com/mirrors/electron/
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+        run: npx electron-builder --win --x64
+
+      - name: 上传产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: liubendou-dsh-win
+          path: |
+            dist/*.exe
+          if-no-files-found: error
+          retention-days: 14

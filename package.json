@@ -1,0 +1,21 @@
+{
+  "name": "liubendou-dsh",
+  "productName": "六本豆",
+  "version": "0.2.2",
+  "description": "六本豆专属 DeepSeek Harness 桌面版",
+  "author": "六本豆",
+  "main": "electron/main.js",
+  "private": true,
+  "scripts": {
+    "patch": "node patch/apply-brand.mjs",
+    "start": "electron .",
+    "dist:win": "npm run patch && electron-builder --win --x64"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.2.2-rc.5"
+  },
+  "devDependencies": {
+    "electron": "33.4.11",
+    "electron-builder": "25.1.8"
+  }
+}
